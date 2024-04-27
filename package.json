@@ -1,0 +1,35 @@
+{
+  "name": "memoli",
+  "version": "0.1.0",
+  "description": "Memorize async/sync function result with cache",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "clean": "rimraf build",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node ./build/index.js",
+    "prepublish": "tsc",
+    "test": "jest",
+    "pretest": "npm run build"
+  },
+  "author": "dedeloper",
+  "license": "ISC",
+  "dependencies": {
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.7",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "node-cache": "^5.1.2",
+    "redis": "^4.6.13",
+    "typescript": "^5.4.5"
+  }
+}

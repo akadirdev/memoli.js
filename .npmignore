@@ -1,0 +1,10 @@
+src/
+node_modules/
+.env
+.eslintignore
+.eslintrc
+.gitignore
+jest.config.js
+build/__tests__/
+todo.md
+package-lock.json
