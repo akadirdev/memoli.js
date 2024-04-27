@@ -1,5 +1,5 @@
-import { memolize } from '../decorator/memolize.decorator';
-import { Memoli } from '../memoli';
+import { memolize } from '../decorators/memolize.decorator';
+import { Memoli } from '../modules/memoli';
 
 class FakeService {
   @memolize()

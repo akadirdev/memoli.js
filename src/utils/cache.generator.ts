@@ -1,6 +1,4 @@
-import { ICache } from '../cache';
-import { InMemoryCache } from '../cache/in-memory.cache';
-import { RedisCache } from '../cache/redis.cache';
+import { ICache, InMemoryCache, RedisCache } from '../caches';
 import { CacheSource, MemoliOptions } from '../interfaces/memoli.interface';
 
 export const generateCacheSource = async (
