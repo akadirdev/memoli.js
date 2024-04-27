@@ -1,6 +1,6 @@
 {
   "name": "memoli",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Memorize async/sync function result with cache",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -15,8 +15,22 @@
     "test": "jest",
     "pretest": "npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akadirdev/memoli.js.git"
+  },
   "author": "dedeloper",
-  "license": "ISC",
+  "license": "MIT",
+  "keywords": [
+    "memo",
+    "memorize",
+    "cache",
+    "redis",
+    "memoli",
+    "caching",
+    "async",
+    "sync"
+  ],
   "dependencies": {
     "reflect-metadata": "^0.2.2"
   },
