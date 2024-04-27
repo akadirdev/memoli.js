@@ -1,6 +1,6 @@
 {
   "name": "memoli",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Memorize async/sync function result with cache",
   "main": "build/index.js",
   "types": "build/index.d.ts",
