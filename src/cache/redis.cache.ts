@@ -16,7 +16,7 @@ export class RedisCache implements ICache {
 
   async initialize() {
     if (!this._client) {
-      this._client = await createClient(this._options).connect();
+      this._client = createClient(this._options);
     }
   }
 
