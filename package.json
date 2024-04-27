@@ -15,8 +15,22 @@
     "test": "jest",
     "pretest": "npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akadirdev/memoli.js.git"
+  },
   "author": "dedeloper",
-  "license": "ISC",
+  "license": "MIT",
+  "keywords": [
+    "memo",
+    "memorize",
+    "cache",
+    "redis",
+    "memoli",
+    "caching",
+    "async",
+    "sync"
+  ],
   "dependencies": {
     "reflect-metadata": "^0.2.2"
   },
