@@ -1,12 +1,15 @@
 import { ICache } from './cache/cache';
-import { CacheSource, MemoliOptions } from './interfaces/memoli.interface';
-import { Fn, FnArgs } from './types/function.type';
+import {
+  CacheSource,
+  MemoliOptions,
+  MemorizeOptions,
+} from './interfaces/memoli.interface';
 import { generateCacheKey } from './utils/cache-key.generator';
 import { generateCacheSource } from './utils/cache.generator';
 
 export class Memoli {
-  private static _memoli: Memoli;
-
+  private static isInitialized: boolean = false;
+  private static _memoli?: Memoli;
   private static _cache?: ICache;
 
   private constructor(private _memoliOpts: MemoliOptions<CacheSource>) {}
@@ -15,24 +18,43 @@ export class Memoli {
     if (!this._memoli) {
       this._cache = await generateCacheSource(memoliOptions);
       this._memoli = new Memoli(memoliOptions);
+      this.isInitialized = true;
+    }
+
+    return this._memoli;
+  }
+
+  static getMemoli() {
+    if (!this._memoli) {
+      return new Memoli({
+        cacheSource: 'in-memory',
+      });
     }
 
     return this._memoli;
   }
 
   async quit() {
-    await Memoli._cache?.quit();
+    await Memoli._cache?.quit().then(() => {
+      delete Memoli._memoli;
+      Memoli.isInitialized = false;
+    });
   }
 
   public get cache(): ICache | undefined {
     return Memoli._cache;
   }
 
-  public async memolize<ReturnType>(
-    fn: Fn<ReturnType>,
-    ...args: FnArgs[]
-  ): Promise<ReturnType> {
-    const { _cache } = Memoli;
+  public async memolize<T, ReturnType>({
+    klass,
+    fn,
+    args,
+  }: MemorizeOptions<T, ReturnType>): Promise<ReturnType> {
+    const { _cache, isInitialized } = Memoli;
+
+    if (!isInitialized) {
+      return fn.apply(klass ?? this, args);
+    }
 
     const fnName = fn.name;
 
@@ -43,7 +65,7 @@ export class Memoli {
     console.log('memoli:memolize:cachedResult: ', cachedResult);
     if (cachedResult) return cachedResult;
 
-    const result = await fn.apply(this, args);
+    const result = await fn.apply(klass ?? this, args);
     console.log('memoli:memolize:result: ', result);
     _cache?.set<ReturnType>(key, result);
 

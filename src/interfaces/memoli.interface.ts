@@ -1,3 +1,4 @@
+import { Fn, FnArgs } from '../types/function.type';
 import { InMemoryCacheOptions } from './in-memory-cache.interface';
 import { RedisOptions } from './redis.interface';
 
@@ -25,3 +26,9 @@ export type MemoliOptions<T extends CacheSource> = T extends RedisCacheSource
   : T extends InMemoryCacheSource
   ? MemoliOptionsWithInMemory<T>
   : never;
+
+export interface MemorizeOptions<T, ReturnType> {
+  klass?: T;
+  fn: Fn<ReturnType>;
+  args: FnArgs[];
+}
