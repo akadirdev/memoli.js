@@ -25,6 +25,7 @@ export async function classFunctionUsage() {
 
   // result1: result data from function call
   const result1 = await memoli.memolize({
+    klass: fakeService,
     fn: fakeService.fakeMethod,
     args: [{ param1: 'fake', param2: 3 }],
   });
@@ -32,6 +33,7 @@ export async function classFunctionUsage() {
 
   // result2: result data from cache without function call
   const result2 = await memoli.memolize({
+    klass: fakeService,
     fn: fakeService.fakeMethod,
     args: [{ param1: 'fake', param2: 3 }],
   });
