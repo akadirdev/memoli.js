@@ -24,13 +24,10 @@ export class Memoli {
     return this._memoli;
   }
 
+  /**
+   * It returns memoli instance if it is already initialized otherwise it will return undefined
+   */
   static getMemoli() {
-    if (!this._memoli) {
-      return new Memoli({
-        cacheSource: 'in-memory',
-      });
-    }
-
     return this._memoli;
   }
 
