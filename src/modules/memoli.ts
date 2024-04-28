@@ -17,8 +17,16 @@ export class Memoli {
   static async initialize(memoliOptions: MemoliOptions<CacheSource>) {
     if (!this._memoli) {
       this._cache = await generateCacheSource(memoliOptions);
+
+      if (!this._cache) {
+        throw new Error('Memoli initialization failed!');
+      }
+
       this._memoli = new Memoli(memoliOptions);
       this.isInitialized = true;
+      if (memoliOptions.debugMode) {
+        console.log(`> memoli: initialized successfully`);
+      }
     }
 
     return this._memoli;
@@ -56,16 +64,23 @@ export class Memoli {
     const fnName = fn.name;
 
     const key = generateCacheKey(fnName, ...args);
-    console.log('memoli:memolize:cache:key: ', key);
+    this.debug(`> memoli:memolize:cache:key: `, key);
 
     const cachedResult = await _cache?.get<ReturnType>(key);
-    console.log('memoli:memolize:cachedResult: ', cachedResult);
+    this.debug(`> memoli:memolize:cachedResult: `, cachedResult);
     if (cachedResult) return cachedResult;
 
     const result = await fn.apply(klass ?? this, args);
-    console.log('memoli:memolize:result: ', result);
+    this.debug(`> memoli:memolize:functionResult: `, result);
     _cache?.set<ReturnType>(key, result);
 
     return result;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private debug(...log: any[]) {
+    if (this._memoliOpts.debugMode) {
+      console.log(...log);
+    }
   }
 }

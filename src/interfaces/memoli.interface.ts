@@ -9,6 +9,7 @@ export type CacheSource = RedisCacheSource | InMemoryCacheSource;
 
 interface BaseMemoliOptions<T extends CacheSource> {
   cacheSource: T;
+  debugMode?: boolean;
 }
 
 interface MemoliOptionsWithRedis<T extends CacheSource>
