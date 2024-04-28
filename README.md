@@ -36,6 +36,7 @@ const memoli = await Memoli.initialize({
   cacheSource: 'redis', // 'redis' or 'in-memory'
   // redisOptions: Includes Redis' own options
   redisOptions: {
+    url: 'redis://<username><password>@<host>:<port>/<database>',
     ttl: 5, // 5 sec
   },
 });
@@ -127,9 +128,10 @@ const hospital = await hospitalServiceCaller.getHospitalFromHospitalService(1);
 
 ```typescript
 const memoli = await Memoli.initialize({
-  cacheSource: 'redis',
-  redisOptions: {
-    ttl: 10,
+  cacheSource: 'in-memory',
+  inMemoryCacheOptions: {
+    stdTTL: 30,
+    checkperiod: 30,
   },
 });
 
