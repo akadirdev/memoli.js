@@ -9,4 +9,4 @@ export type FnArgs =
   | undefined
   | any;
 
-export type Fn<ReturnType> = (...args: FnArgs[]) => ReturnType;
+export type Fn<ArgsType, ReturnType> = (...args: ArgsType[]) => ReturnType;

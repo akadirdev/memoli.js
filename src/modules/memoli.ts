@@ -42,11 +42,11 @@ export class Memoli {
     return Memoli._cache;
   }
 
-  public async memolize<T, ReturnType>({
+  public async memolize<T, ArgsType, ReturnType>({
     klass,
     fn,
     args,
-  }: MemorizeOptions<T, ReturnType>): Promise<ReturnType> {
+  }: MemorizeOptions<T, ArgsType, ReturnType>): Promise<ReturnType> {
     const { _cache, isInitialized } = Memoli;
 
     if (!isInitialized) {
