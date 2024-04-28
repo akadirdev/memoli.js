@@ -24,13 +24,10 @@ export class Memoli {
     return this._memoli;
   }
 
+  /**
+   * It returns memoli instance if it is already initialized otherwise it will return undefined
+   */
   static getMemoli() {
-    if (!this._memoli) {
-      return new Memoli({
-        cacheSource: 'in-memory',
-      });
-    }
-
     return this._memoli;
   }
 
@@ -45,11 +42,11 @@ export class Memoli {
     return Memoli._cache;
   }
 
-  public async memolize<T, ReturnType>({
+  public async memolize<T, ArgsType, ReturnType>({
     klass,
     fn,
     args,
-  }: MemorizeOptions<T, ReturnType>): Promise<ReturnType> {
+  }: MemorizeOptions<T, ArgsType, ReturnType>): Promise<ReturnType> {
     const { _cache, isInitialized } = Memoli;
 
     if (!isInitialized) {

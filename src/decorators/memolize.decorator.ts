@@ -12,11 +12,15 @@ export function memolize() {
     const memoli = Memoli.getMemoli();
 
     descriptor.value = async function (...args: any[]) {
-      return memoli.memolize({
-        klass: this,
-        fn: originalMethod,
-        args,
-      });
+      if (memoli) {
+        return memoli.memolize({
+          klass: this,
+          fn: originalMethod,
+          args,
+        });
+      } else {
+        return originalMethod.apply(this, args);
+      }
     };
 
     return descriptor;
