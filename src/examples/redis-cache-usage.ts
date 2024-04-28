@@ -1,10 +1,10 @@
-import { Memoli } from '../../memoli';
+import { Memoli } from '../modules/memoli';
 
-export async function redisSourceTest() {
+export async function redisCacheUsage() {
   const memoli = await Memoli.initialize({
     cacheSource: 'redis',
     redisOptions: {
-      ttl: 10 * 1000,
+      ttl: 10,
     },
   });
 
@@ -22,5 +22,5 @@ export async function redisSourceTest() {
   const result4 = await cache.get('key-1');
   console.log('result4: ', result4);
 
-  // await memoli.quit();
+  await memoli.quit();
 }

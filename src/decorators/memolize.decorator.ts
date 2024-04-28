@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Memoli } from '../memoli';
+import { Memoli } from '../modules/memoli';
 
 export function memolize() {
   return function (

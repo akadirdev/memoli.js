@@ -1,4 +1,4 @@
-import { Memoli } from '../memoli';
+import { Memoli } from '../modules/memoli';
 
 function sum(a: number, b: number): number {
   return a + b;

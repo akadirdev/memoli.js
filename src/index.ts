@@ -1,4 +1,4 @@
-export * from './memoli';
+export * from './modules/memoli';
 
 // import {
 //   functionalUsage,

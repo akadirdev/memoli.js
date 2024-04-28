@@ -1,6 +1,6 @@
-import { Memoli } from '../../memoli';
+import { Memoli } from '../modules/memoli';
 
-export async function inMemoryCacheSourceTest() {
+export async function inMemoryCacheUsage() {
   const memoli = await Memoli.initialize({
     cacheSource: 'in-memory',
     inMemoryCacheOptions: {

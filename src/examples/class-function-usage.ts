@@ -1,4 +1,4 @@
-import { Memoli } from '../memoli';
+import { Memoli } from '../modules/memoli';
 
 class FakeService {
   async fakeMethod({ param1, param2 }: { param1: string; param2: number }) {

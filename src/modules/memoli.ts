@@ -1,11 +1,11 @@
-import { ICache } from './cache/cache';
+import { ICache } from '../caches';
 import {
   CacheSource,
   MemoliOptions,
   MemorizeOptions,
-} from './interfaces/memoli.interface';
-import { generateCacheKey } from './utils/cache-key.generator';
-import { generateCacheSource } from './utils/cache.generator';
+} from '../interfaces/memoli.interface';
+import { generateCacheKey } from '../utils/cache-key.generator';
+import { generateCacheSource } from '../utils/cache.generator';
 
 export class Memoli {
   private static isInitialized: boolean = false;
