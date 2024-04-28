@@ -130,8 +130,8 @@ const hospital = await hospitalServiceCaller.getHospitalFromHospitalService(1);
 const memoli = await Memoli.initialize({
   cacheSource: 'in-memory',
   inMemoryCacheOptions: {
-    stdTTL: 30,
-    checkperiod: 30,
+    stdTTL: 30, // 30 sec
+    checkperiod: 30, // each 30 sec
   },
 });
 
